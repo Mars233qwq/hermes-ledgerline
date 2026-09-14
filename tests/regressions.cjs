@@ -2,7 +2,7 @@ const assert = require('node:assert/strict')
 const { test } = require('node:test')
 const fs = require('node:fs')
 const vm = require('node:vm')
-const source = fs.readFileSync(require('node:path').join(__dirname, '..', 'plugin.js'), 'utf8')
+const source = fs.readFileSync(require('node:path').join(__dirname, '..', process.env.HERMES_TEST_CATALOG ? 'catalog/desktop/plugin.js' : 'plugin.js'), 'utf8')
 
 function load() {
   const atom = initial => {
