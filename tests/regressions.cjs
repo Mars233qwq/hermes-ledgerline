@@ -185,3 +185,13 @@ test('paginated message reads stop when the connection changes', async () => {
   await assert.rejects(run('pending'), /connection changed/)
   assert.equal(run('calls'), 1)
 })
+
+test('the Chinese bundle has no orphan keys and is actually translated', () => {
+  const { run } = load()
+  // A key that is not in EN can never resolve — 'zh' would silently fall back
+  // to English with the typo invisible.
+  assert.equal(run('JSON.stringify(Object.keys(ZH).filter(k => !(k in EN)))'), '[]')
+  // Every entry must differ from English except the product name, so a locale
+  // cop-out (a whole block left as the EN string) fails here.
+  assert.equal(run('JSON.stringify(Object.keys(ZH).filter(k => ZH[k] === EN[k]))'), '["nav","title"]')
+})
