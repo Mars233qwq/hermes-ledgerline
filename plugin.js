@@ -2561,7 +2561,7 @@ const ZH = {
   liveOut: '输出',
   liveRunning: '进行中',
   estSuffix: '估算',
-  naValue: '无',
+  naValue: '暂无数据',
   toolDone: '完成',
   cacheShort: '缓存',
   anEmpty: '（空回答）',
